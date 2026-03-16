@@ -3,6 +3,7 @@
 #include <chrono>
 #include <sstream>
 #include <iomanip>
+#include <regex>
 
 static std::string current_date() {
     auto now = std::chrono::system_clock::now();
@@ -26,7 +27,7 @@ Alias::Alias(std::string name, std::string command, std::string description)
 }
 
 std::string Alias::display() const {
-    return "alias " + name_ + "='" + command_ + "'";
+    return "alias " + name_ + "='" + std::regex_replace(command_, std::regex("'"), "'\\''") + "'";
 }
 
 std::string Alias::summary() const {

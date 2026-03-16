@@ -1,7 +1,7 @@
 #include "ZshExporter.h"
 
 std::string ZshExporter::format_alias(const Alias& a) const {
-    return "alias " + a.name() + "='" + a.command() + "'";
+    return a.display();
 }
 
 std::string ZshExporter::header() const {
